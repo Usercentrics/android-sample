@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Usercentrics Sample</string>
+    <string name="open_cmp">Show Usercentrics UI</string>
+    <string name="custom_ui">Custom UI</string>
+    <string name="custom_ui_intro">The label below shows what Legal Framework has been set according to your Settings ID</string>
+    <string name="custom_ui_intro_2">Those buttons represents APIs that you can call in order to build your own CMP with Usercentrics</string>
+    <string name="accept_all">Accept All</string>
+    <string name="deny_all">Deny All</string>
+    <string name="save_services">Save Services</string>
+
+    <string name="gdpr">GDPR</string>
+    <string name="ccpa">CCPA</string>
+    <string name="tcf_2_0">TCF 2.0</string>
+    <string name="change_language">Change language</string>
+    <string name="print_ui_elements_button">Print UI elements</string>
+</resources>
