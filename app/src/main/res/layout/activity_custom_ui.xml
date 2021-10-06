@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".UsercentricsUIActivity">
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/print_ui_elements_button" />
 
     <Button
@@ -41,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/accept_all" />
 
     <Button
@@ -48,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/deny_all" />
 
     <Button
@@ -55,6 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/save_services" />
 
     <Button
@@ -62,5 +65,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:enabled="false"
         android:text="@string/change_language" />
 </LinearLayout>

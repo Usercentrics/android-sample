@@ -23,6 +23,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".BuildYourOwnUIActivity" />
+        <activity android:name=".BuildYourOwnUIActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UsercentricsUIActivity" />
+        </activity>
     </application>
 </manifest>
