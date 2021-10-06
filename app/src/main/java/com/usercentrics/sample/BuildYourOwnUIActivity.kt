@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.usercentrics.sdk.UserDecision
 import com.usercentrics.sdk.Usercentrics
+import com.usercentrics.sdk.UsercentricsServiceConsent
 import com.usercentrics.sdk.models.common.UsercentricsVariant
 import com.usercentrics.sdk.models.settings.UsercentricsConsentType
 import com.usercentrics.sdk.services.tcf.TCFDecisionUILayer
@@ -25,30 +26,23 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
     private val changeLanguageButton by lazy { findViewById<View>(R.id.change_language_button) }
 
     private val activeVariant by lazy { Usercentrics.instance.getCMPData().activeVariant }
-    private val isTCF by lazy { activeVariant == UsercentricsVariant.TCF }
-    private val isCCPA by lazy { activeVariant == UsercentricsVariant.CCPA }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_ui)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.custom_ui)
 
-        toggleButtonsState(isEnabled = false)
-
-        setupUsercentrics()
-        setupButtons()
-        showCurrentLegalFramework()
-    }
-
-    private fun setupUsercentrics() {
+        // isReady is called after Usercentrics has finished initializing
         Usercentrics.isReady(onSuccess = {
-            toggleButtonsState(isEnabled = true)
+            bindContent()
         }, onFailure = {
+            // Handle error
             it.printStackTrace()
         })
     }
 
-    private fun applyConsent() {
-        Usercentrics.instance.getConsents()
+    private fun applyConsent(consents: List<UsercentricsServiceConsent>) {
         // https://docs.usercentrics.com/cmp_in_app_sdk/latest/apply_consent/apply-consent/#apply-consent-to-each-service
     }
 
@@ -143,63 +137,77 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
     }
 
     private fun acceptAllCallback() {
-        when {
-            isTCF -> {
-                val layer = TCFDecisionUILayer.FIRST_LAYER
-                Usercentrics.instance.acceptAllForTCF(layer)
+        val consents = when (activeVariant) {
+            UsercentricsVariant.DEFAULT -> {
+                val consentType = UsercentricsConsentType.EXPLICIT
+                Usercentrics.instance.acceptAll(consentType)
             }
-            isCCPA -> {
+            UsercentricsVariant.CCPA -> {
                 val doNotSellUsersInformation = false
                 val consentType = UsercentricsConsentType.EXPLICIT
                 Usercentrics.instance.saveOptOutForCCPA(doNotSellUsersInformation, consentType)
             }
-            else -> {
+            UsercentricsVariant.TCF -> {
+                val layer = TCFDecisionUILayer.FIRST_LAYER
                 val consentType = UsercentricsConsentType.EXPLICIT
-                Usercentrics.instance.acceptAllServices(consentType)
+                Usercentrics.instance.acceptAllForTCF(layer, consentType)
             }
         }
-        applyConsent()
+
+        applyConsent(consents)
     }
 
     private fun denyAllCallback() {
-        when {
-            isTCF -> {
-                val layer = TCFDecisionUILayer.FIRST_LAYER
-                Usercentrics.instance.denyAllForTCF(layer)
+        val consents = when (activeVariant) {
+            UsercentricsVariant.DEFAULT -> {
+                val consentType = UsercentricsConsentType.EXPLICIT
+                Usercentrics.instance.denyAll(consentType)
             }
-            isCCPA -> {
+            UsercentricsVariant.CCPA -> {
                 val doNotSellUsersInformation = true
                 val consentType = UsercentricsConsentType.EXPLICIT
                 Usercentrics.instance.saveOptOutForCCPA(doNotSellUsersInformation, consentType)
             }
-            else -> {
+            UsercentricsVariant.TCF -> {
+                val layer = TCFDecisionUILayer.FIRST_LAYER
                 val consentType = UsercentricsConsentType.EXPLICIT
-                Usercentrics.instance.denyAllServices(consentType)
+                Usercentrics.instance.denyAllForTCF(layer, consentType)
             }
         }
 
-        applyConsent()
+        applyConsent(consents)
     }
 
-    @Suppress("ControlFlowWithEmptyBody")
     private fun saveServicesCallback() {
-        when {
-            isTCF -> {
-                val layer = TCFDecisionUILayer.FIRST_LAYER
-                val decisions = TCFUserDecisions(purposes = purposesExample(), specialFeaturesExample(), vendorsExample())
-                Usercentrics.instance.updateChoicesForTCF(decisions, layer)
+        val consents = when (activeVariant) {
+            UsercentricsVariant.DEFAULT -> {
+                val decisions = decisionsListExample()
+                val consentType = UsercentricsConsentType.EXPLICIT
+                Usercentrics.instance.saveDecisions(decisions, consentType)
             }
-            isCCPA -> {
-                println("NO ACTION FOR CCPA")
+            UsercentricsVariant.CCPA -> {
+                println("NO ACTION FOR CCPA - This legal framework has no granular choices")
+                Usercentrics.instance.getConsents()
             }
-            else -> {
+            UsercentricsVariant.TCF -> {
                 val layer = TCFDecisionUILayer.FIRST_LAYER
-                val decisions = TCFUserDecisions(purposes = purposesExample(), specialFeaturesExample(), vendorsExample())
-                Usercentrics.instance.updateChoicesForTCF(decisions, layer)
+                val tcfDecisions = TCFUserDecisions(
+                    purposes = purposesExample(),
+                    specialFeaturesExample(),
+                    vendorsExample()
+                )
+                val decisions = decisionsListExample()
+                val consentType = UsercentricsConsentType.EXPLICIT
+                Usercentrics.instance.saveDecisionsForTCF(
+                    tcfDecisions,
+                    layer,
+                    decisions,
+                    consentType
+                )
             }
         }
 
-        applyConsent()
+        applyConsent(consents)
     }
 
     private fun changeLanguageCallback() {
@@ -213,15 +221,21 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
     }
 
     private fun printUiElementsCallback() {
-        when {
-            isCCPA -> printCCPA()
-            isTCF -> printTCF()
-            else -> printGDPR()
+        when (activeVariant) {
+            UsercentricsVariant.DEFAULT -> printGDPR()
+            UsercentricsVariant.CCPA -> printCCPA()
+            UsercentricsVariant.TCF -> printTCF()
         }
     }
 
     private fun purposesExample(): List<TCFUserDecisionOnPurpose> {
-        return listOf(TCFUserDecisionOnPurpose(id = 123, consent = false, legitimateInterestConsent = true))
+        return listOf(
+            TCFUserDecisionOnPurpose(
+                id = 123,
+                consent = false,
+                legitimateInterestConsent = true
+            )
+        )
     }
 
     private fun specialFeaturesExample(): List<TCFUserDecisionOnSpecialFeature> {
@@ -229,23 +243,27 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
     }
 
     private fun vendorsExample(): List<TCFUserDecisionOnVendor> {
-        return listOf(TCFUserDecisionOnVendor(id = 111, consent = false, legitimateInterestConsent = true))
+        return listOf(
+            TCFUserDecisionOnVendor(
+                id = 111,
+                consent = false,
+                legitimateInterestConsent = true
+            )
+        )
     }
 
     private fun decisionsListExample(): List<UserDecision> {
         return listOf(UserDecision(serviceId = "1s4dc4", consent = false))
     }
 
-    private fun showCurrentLegalFramework() {
-        val legalFrameworkStringResId = when {
-            isTCF -> R.string.tcf_2_0
-            isCCPA -> R.string.ccpa
-            else -> R.string.gdpr
+    private fun bindContent() {
+        val legalFrameworkStringResId = when (activeVariant) {
+            UsercentricsVariant.DEFAULT -> R.string.gdpr
+            UsercentricsVariant.CCPA -> R.string.ccpa
+            UsercentricsVariant.TCF -> R.string.tcf_2_0
         }
         currentLegalFrameworkTextView.setText(legalFrameworkStringResId)
-    }
 
-    private fun setupButtons() {
         printUiElementsButton.setOnClickListener {
             printUiElementsCallback()
         }
@@ -261,12 +279,11 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
         changeLanguageButton.setOnClickListener {
             changeLanguageCallback()
         }
-    }
 
-    private fun toggleButtonsState(isEnabled: Boolean) {
-        acceptAllButton.isEnabled = isEnabled
-        denyAllButton.isEnabled = isEnabled
-        saveServicesButton.isEnabled = isEnabled
-        changeLanguageButton.isEnabled = isEnabled
+        printUiElementsButton.isEnabled = true
+        acceptAllButton.isEnabled = true
+        denyAllButton.isEnabled = true
+        saveServicesButton.isEnabled = true
+        changeLanguageButton.isEnabled = true
     }
 }
