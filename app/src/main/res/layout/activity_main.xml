@@ -6,16 +6,43 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/open_cmp_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/show_first_layer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
-        android:text="@string/open_cmp" />
+        android:text="@string/show_first_layer" />
 
     <Button
-        android:id="@+id/custom_ui_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/show_second_layer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
+        android:enabled="false"
+        android:text="@string/show_second_layer" />
+
+    <Button
+        android:id="@+id/show_customization_example_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
+        android:enabled="false"
+        android:text="@string/show_customization_example_1" />
+
+    <Button
+        android:id="@+id/show_customization_example_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
+        android:enabled="false"
+        android:text="@string/show_customization_example_2" />
+
+    <Button
+        android:id="@+id/custom_ui"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
         android:text="@string/custom_ui" />
+
 </LinearLayout>

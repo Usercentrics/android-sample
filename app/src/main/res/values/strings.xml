@@ -1,16 +1,23 @@
 <resources>
     <string name="app_name">Usercentrics Sample</string>
-    <string name="open_cmp">Show Usercentrics UI</string>
+
+    <!-- Main -->
+    <string name="show_first_layer">Show First Layer</string>
+    <string name="show_second_layer">Show Second Layer</string>
+    <string name="show_customization_example_1">Customization Example 1</string>
+    <string name="show_customization_example_2">Customization Example 2</string>
     <string name="custom_ui">Custom UI</string>
+
+    <!-- BuildYourOwnUI -->
     <string name="custom_ui_intro">The label below shows what Legal Framework has been set according to your Settings ID</string>
     <string name="custom_ui_intro_2">Those buttons represents APIs that you need to call in order to replicate user actions to Usercentrics</string>
     <string name="accept_all">Accept All</string>
     <string name="deny_all">Deny All</string>
     <string name="save_services">Save Services</string>
-
     <string name="gdpr">GDPR</string>
     <string name="ccpa">CCPA</string>
     <string name="tcf_2_0">TCF 2.0</string>
     <string name="change_language">Change language</string>
     <string name="print_ui_elements_button">Print UI elements</string>
+
 </resources>

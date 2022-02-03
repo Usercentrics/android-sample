@@ -1,4 +1,4 @@
-package com.usercentrics.sample
+package com.apps.test
 
 import android.app.Application
 import com.usercentrics.sdk.Usercentrics

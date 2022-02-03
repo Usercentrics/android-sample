@@ -1,4 +1,4 @@
-package com.usercentrics.sample
+package com.apps.test
 
 import android.os.Bundle
 import android.view.View
