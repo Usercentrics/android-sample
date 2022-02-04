@@ -16,7 +16,16 @@ Result
 
 After running the app you should see a screen like this:
 
-<img src="main.png" height="534" width="300"/>
+<img src="screenshots/main.png" height="500" width="270"/>
+
+Customization Examples
+------------
+
+- Example 1:
+  <img src="screenshots/customization_example_1.png" height="500" width="270"/>
+  
+- Example 2:
+  <img src="screenshots/customization_example_2.png" height="500" width="270"/>
 
 Custom UI
 ------------
@@ -24,7 +33,7 @@ Custom UI
 This screen will help you understand how you can [build your own CMP](https://docs.usercentrics.com/cmp_in_app_sdk/latest/collect_consent/build_own_cmp/).
 We recommend you to interact with all buttons displayed, check your Logcat and don't forget to see the code behind.
 
-<img src="custom_ui.png" height="534" width="300"/>
+<img src="screenshots/custom_ui.png" height="500" width="270"/>
 
 Learn more
 ------------
