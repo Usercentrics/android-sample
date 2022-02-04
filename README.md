@@ -22,10 +22,12 @@ Customization Examples
 ------------
 
 - Example 1:
-  <img src="screenshots/customization_example_1.png" height="500" width="270"/>
+  
+<img src="screenshots/customization_example_1.png" height="500" width="270"/>
   
 - Example 2:
-  <img src="screenshots/customization_example_2.png" height="500" width="270"/>
+  
+<img src="screenshots/customization_example_2.png" height="500" width="270"/>
 
 Custom UI
 ------------
