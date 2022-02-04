@@ -21,11 +21,13 @@ After running the app you should see a screen like this:
 Customization Examples
 ------------
 
-- Example 1:
+These examples will help you understand how the customization API works.
+
+- [Example 1](https://github.com/Usercentrics/android-sample/blob/main/app/src/main/java/com/apps/test/FirstLayerCustomizationExample1.kt):
   
 <img src="screenshots/customization_example_1.png" height="500" width="270"/>
   
-- Example 2:
+- [Example 2](https://github.com/Usercentrics/android-sample/blob/main/app/src/main/java/com/apps/test/FirstLayerCustomizationExample2.kt):
   
 <img src="screenshots/customization_example_2.png" height="500" width="270"/>
 
