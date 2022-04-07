@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         // 'isReady' is called after Usercentrics has finished initializing
         // get the consent status of the user, via UsercentricsReadyStatus
         Usercentrics.isReady(onSuccess = { status ->
-            if (status.shouldShowCMP) {
+            if (status.shouldCollectConsent) {
                 showFirstLayer()
             } else {
                 applyConsent(status.consents)
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
         showCustomizationExample2Button.setOnClickListener {
             showFirstLayer(
-                layout = UsercentricsLayout.FullLight,
+                layout = UsercentricsLayout.Full,
                 settings = firstLayerCustomizationExample2(this),
             )
         }

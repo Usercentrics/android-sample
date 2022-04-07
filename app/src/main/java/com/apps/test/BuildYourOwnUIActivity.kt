@@ -83,7 +83,7 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
 
     private fun printTCF() {
         println("Set your CMP ID")
-        Usercentrics.instance.setCMPId(0)
+        Usercentrics.instance.setCMPId(13)
 
         val data = Usercentrics.instance.getCMPData()
         val tcf2 = data.settings.tcf2 ?: return
@@ -95,29 +95,32 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
         println("Second layer description: ${tcf2.secondLayerDescription}")
 
         // TCF Data
-        val tcfData = Usercentrics.instance.getTCFData()
-        for (purpose in tcfData.purposes) {
-            println("Purpose: ${purpose.name}")
-        }
+        Usercentrics.instance.getTCFData { tcfData ->
+            for (purpose in tcfData.purposes) {
+                println("Purpose: ${purpose.name}")
+            }
 
-        for (specialPurpose in tcfData.specialPurposes) {
-            println("Special Purpose: ${specialPurpose.name}")
-        }
+            for (specialPurpose in tcfData.specialPurposes) {
+                println("Special Purpose: ${specialPurpose.name}")
+            }
 
-        for (feature in tcfData.features) {
-            println("Feature: ${feature.name}")
-        }
+            for (feature in tcfData.features) {
+                println("Feature: ${feature.name}")
+            }
 
-        for (specialFeature in tcfData.specialFeatures) {
-            println("Special Feature: ${specialFeature.name}")
-        }
+            for (specialFeature in tcfData.specialFeatures) {
+                println("Special Feature: ${specialFeature.name}")
+            }
 
-        for (stack in tcfData.stacks) {
-            println("Stack: ${stack.name}")
-        }
+            for (stack in tcfData.stacks) {
+                println("Stack: ${stack.name}")
+            }
 
-        for (vendor in tcfData.vendors) {
-            println("Vendor: ${vendor.name}")
+            for (vendor in tcfData.vendors) {
+                println("Vendor: ${vendor.name}")
+            }
+
+            println("TCString ${tcfData.tcString}")
         }
 
         // Non-IAB data
@@ -132,8 +135,6 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
         println("Accept All button: ${tcf2.buttonsAcceptAllLabel}")
         println("Deny button: ${tcf2.buttonsDenyAllLabel}")
         println("Save button: ${tcf2.buttonsSaveLabel}")
-
-        println("TCString ${Usercentrics.instance.getTCString()}")
     }
 
     private fun acceptAllCallback() {
