@@ -47,13 +47,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFirstLayer(
         layout: UsercentricsLayout = UsercentricsLayout.Popup(PopupPosition.BOTTOM),
-        settings: FirstLayerStyleSettings? = null
+        settings: BannerSettings? = null
     ) {
         // Launch Usercentrics Banner with your settings
-        banner = UsercentricsBanner(this).also {
+        banner = UsercentricsBanner(this, settings).also {
             it.showFirstLayer(
                 layout = layout,
-                settings = settings,
                 callback = ::handleUserResponse
             )
         }
@@ -61,9 +60,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSecondLayer() {
         // This is useful when you need to call our CMP from settings screen for instance, therefore the user may dismiss the view
-        banner = UsercentricsBanner(this).also {
-            it.showSecondLayer(
+        val settings = BannerSettings(
+            secondLayerSettings = SecondLayerStyleSettings(
                 showCloseButton = true,
+            )
+        )
+        banner = UsercentricsBanner(this, settings).also {
+            it.showSecondLayer(
                 callback = ::handleUserResponse
             )
         }
@@ -89,13 +92,13 @@ class MainActivity : AppCompatActivity() {
         showCustomizationExample1Button.setOnClickListener {
             showFirstLayer(
                 layout = UsercentricsLayout.Popup(PopupPosition.BOTTOM),
-                settings = firstLayerCustomizationExample1(this),
+                settings = customizationExample1(this),
             )
         }
         showCustomizationExample2Button.setOnClickListener {
             showFirstLayer(
                 layout = UsercentricsLayout.Full,
-                settings = firstLayerCustomizationExample2(this),
+                settings = customizationExample2(this),
             )
         }
         customUIButton.setOnClickListener {
