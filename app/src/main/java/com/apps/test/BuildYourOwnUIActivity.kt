@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.usercentrics.sdk.UserDecision
 import com.usercentrics.sdk.Usercentrics
 import com.usercentrics.sdk.UsercentricsServiceConsent
+import com.usercentrics.sdk.firstLayerDescription
 import com.usercentrics.sdk.models.common.UsercentricsVariant
 import com.usercentrics.sdk.models.settings.UsercentricsConsentType
 import com.usercentrics.sdk.services.tcf.TCFDecisionUILayer
@@ -51,9 +52,8 @@ class BuildYourOwnUIActivity : AppCompatActivity() {
 
         val settings = data.settings
         println("Title: ${settings.labels.firstLayerTitle}")
-        println("Description: ${settings.bannerMessage}")
+        println("Description: ${settings.firstLayerDescription}")
 
-        println("data.settings: $settings")
         println("data.services: ${data.services}")
         println("data.categories: ${data.categories}")
 

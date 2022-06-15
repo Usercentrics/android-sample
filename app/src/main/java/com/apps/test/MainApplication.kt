@@ -11,10 +11,12 @@ class MainApplication : Application() {
         super.onCreate()
 
         // Initialize Usercentrics with your configuration
-        val settingsId = "Yi9N3aXia"
-        val options = UsercentricsOptions(settingsId, loggerLevel = UsercentricsLoggerLevel.DEBUG)
+        val options = UsercentricsOptions(
+            settingsId = "Yi9N3aXia",
+            loggerLevel = UsercentricsLoggerLevel.DEBUG,
+        )
 
         Usercentrics.initialize(this, options)
     }
-    
+
 }
