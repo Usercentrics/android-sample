@@ -19,14 +19,16 @@ private fun getCustomFont(context: Context): Typeface {
 
 fun customizationExample1(context: Context): BannerSettings {
     return BannerSettings(
-        font = BannerFont(
-            context = context,
-            fontFamily = getCustomFont(context),
-            sizeInSp = 14f,
+        generalStyleSettings = GeneralStyleSettings(
+            font = BannerFont(
+                context = context,
+                fontFamily = getCustomFont(context),
+                sizeInSp = 14f,
+            ),
+            logo = logoImage,
+            links = LegalLinksSettings.BOTH,
         ),
-        logo = logoImage,
-        links = LegalLinksSettings.BOTH,
-        firstLayerSettings = FirstLayerStyleSettings(
+        firstLayerStyleSettings = FirstLayerStyleSettings(
             headerImage = HeaderImageSettings.ExtendedLogoSettings(firstLayerImage),
             title = TitleSettings(
                 alignment = SectionAlignment.START,
@@ -61,7 +63,7 @@ fun customizationExample1(context: Context): BannerSettings {
                 )
             )
         ),
-        secondLayerSettings = SecondLayerStyleSettings(
+        secondLayerStyleSettings = SecondLayerStyleSettings(
             buttonLayout = ButtonLayout.Row(
                 listOf(
                     ButtonSettings(

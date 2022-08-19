@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSecondLayer() {
         // This is useful when you need to call our CMP from settings screen for instance, therefore the user may dismiss the view
         val settings = BannerSettings(
-            secondLayerSettings = SecondLayerStyleSettings(
+            secondLayerStyleSettings = SecondLayerStyleSettings(
                 showCloseButton = true,
             )
         )

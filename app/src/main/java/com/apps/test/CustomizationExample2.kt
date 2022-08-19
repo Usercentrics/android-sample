@@ -12,13 +12,21 @@ private const val buttonCornerRadius = 50
 
 fun customizationExample2(context: Context): BannerSettings {
     return BannerSettings(
-        font = BannerFont(
-            regularFont = Typeface.DEFAULT,
-            boldFont = Typeface.DEFAULT_BOLD,
-            sizeInSp = 14f,
+        generalStyleSettings = GeneralStyleSettings(
+            font = BannerFont(
+                regularFont = Typeface.DEFAULT,
+                boldFont = Typeface.DEFAULT_BOLD,
+                sizeInSp = 14f,
+            ),
+            links = LegalLinksSettings.SECOND_LAYER_ONLY,
+            textColor = Color.LTGRAY,
+            bordersColor = ContextCompat.getColor(context, R.color.grey),
+            layerBackgroundColor = ContextCompat.getColor(context, R.color.dark),
+            layerBackgroundSecondaryColor = ContextCompat.getColor(context, R.color.grey),
+            linkColor = Color.WHITE,
+            tabColor = Color.WHITE,
         ),
-        links = LegalLinksSettings.SECOND_LAYER_ONLY,
-        firstLayerSettings = FirstLayerStyleSettings(
+        firstLayerStyleSettings = FirstLayerStyleSettings(
             backgroundColor = ContextCompat.getColor(context, R.color.dark),
             headerImage = HeaderImageSettings.LogoSettings(firstLayerLogoImage),
             title = TitleSettings(
@@ -52,7 +60,7 @@ fun customizationExample2(context: Context): BannerSettings {
                 ),
             )
         ),
-        secondLayerSettings = SecondLayerStyleSettings(
+        secondLayerStyleSettings = SecondLayerStyleSettings(
             buttonLayout = ButtonLayout.Column(
                 listOf(
                     ButtonSettings(
