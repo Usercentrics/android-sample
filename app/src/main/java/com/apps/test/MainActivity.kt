@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         // Launch Usercentrics Banner with your settings
         banner = UsercentricsBanner(this, settings).also {
             it.showFirstLayer(
-                layout = layout,
                 callback = ::handleUserResponse
             )
         }
