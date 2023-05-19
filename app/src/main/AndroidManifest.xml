@@ -15,7 +15,8 @@
 
         <activity
             android:name="com.apps.test.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +24,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.apps.test.BuildYourOwnUIActivity">
+        <activity
+            android:name="com.apps.test.BuildYourOwnUIActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.apps.test.MainActivity" />
