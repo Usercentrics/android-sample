@@ -33,6 +33,8 @@ android {
 
 dependencies {
     implementation 'com.usercentrics.sdk:usercentrics-ui:2.15.2'
+    implementation platform('com.google.firebase:firebase-bom:33.1.1')
+    implementation 'com.google.firebase:firebase-analytics'
 
     def lifecycle_version = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
@@ -45,3 +47,5 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 }
+
+apply plugin: 'com.google.gms.google-services'
