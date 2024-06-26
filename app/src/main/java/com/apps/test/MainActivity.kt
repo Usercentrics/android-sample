@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.FirebaseApp
 import com.usercentrics.sdk.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        FirebaseApp.initializeApp(this)
 
         // 'isReady' is called after Usercentrics has finished initializing
         // get the consent status of the user, via UsercentricsReadyStatus

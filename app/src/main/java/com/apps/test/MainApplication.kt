@@ -12,8 +12,9 @@ class MainApplication : Application() {
 
         // Initialize Usercentrics with your configuration
         val options = UsercentricsOptions(
-            settingsId = "Yi9N3aXia",
+            settingsId = "QsYfVcScdFgaVf",
             loggerLevel = UsercentricsLoggerLevel.DEBUG,
+            consentMediation = true
         )
 
         Usercentrics.initialize(this, options)
