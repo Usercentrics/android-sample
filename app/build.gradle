@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.usercentrics.sdk:usercentrics-ui:2.15.2'
+    implementation 'com.usercentrics.sdk:usercentrics-ui:2.17.0'
 
     def lifecycle_version = "2.8.6"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
