@@ -4,13 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 35
-
     namespace 'com.apps.test'
+
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.apps.test"
         minSdk 21
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
