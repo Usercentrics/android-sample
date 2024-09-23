@@ -4,7 +4,20 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.core.content.ContextCompat
-import com.usercentrics.sdk.*
+import com.usercentrics.sdk.BannerFont
+import com.usercentrics.sdk.BannerSettings
+import com.usercentrics.sdk.ButtonLayout
+import com.usercentrics.sdk.ButtonSettings
+import com.usercentrics.sdk.ButtonType
+import com.usercentrics.sdk.FirstLayerStyleSettings
+import com.usercentrics.sdk.GeneralStyleSettings
+import com.usercentrics.sdk.HeaderImageSettings
+import com.usercentrics.sdk.LegalLinksSettings
+import com.usercentrics.sdk.MessageSettings
+import com.usercentrics.sdk.SecondLayerStyleSettings
+import com.usercentrics.sdk.SectionAlignment
+import com.usercentrics.sdk.TitleSettings
+import com.usercentrics.sdk.UsercentricsImage
 
 private val firstLayerLogoImage = UsercentricsImage.ImageDrawableId(R.drawable.header_logo)
 private const val buttonTextSizeInSp = 14f
