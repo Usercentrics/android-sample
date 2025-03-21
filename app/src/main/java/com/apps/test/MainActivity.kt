@@ -41,11 +41,9 @@ class MainActivity : AppCompatActivity() {
     private fun clearAndInitAgain(settingsId: String) {
         Usercentrics.isReady({
             Usercentrics.instance.clearUserSession({}, {})
+        }, {})
 
-            initialize(settingsId = settingsId)
-        }, {
-
-        })
+        initialize(settingsId = settingsId)
     }
 
     override fun onResume() {
