@@ -2,8 +2,12 @@
     <string name="app_name">Usercentrics Sample</string>
 
     <!-- Main -->
-    <string name="show_first_layer">Show First Layer</string>
-    <string name="show_second_layer">Show Second Layer</string>
+    <string name="show_first_layer_gdpr">Show First Layer - GDPR</string>
+    <string name="show_first_layer_tcf">Show First Layer - TCF</string>
+    <string name="show_first_layer_ccpa">Show First Layer - CCPA</string>
+    <string name="show_second_layer_gdpr">Show Second Layer - GDPR</string>
+    <string name="show_second_layer_tcf">Show Second Layer - TCF</string>
+    <string name="show_second_layer_ccpa">Show Second Layer - CCPA</string>
     <string name="show_customization_example_1">Customization Example 1</string>
     <string name="show_customization_example_2">Customization Example 2</string>
     <string name="custom_ui">Custom UI</string>

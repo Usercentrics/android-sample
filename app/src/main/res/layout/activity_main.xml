@@ -6,43 +6,50 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/show_first_layer"
+        android:id="@+id/show_first_layer_gdpr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
-        android:text="@string/show_first_layer" />
+        android:text="@string/show_first_layer_gdpr" />
 
     <Button
-        android:id="@+id/show_second_layer"
+        android:id="@+id/show_second_layer_gdpr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
-        android:text="@string/show_second_layer" />
+        android:text="@string/show_second_layer_gdpr" />
 
     <Button
-        android:id="@+id/show_customization_example_1"
+        android:id="@+id/show_first_layer_tcf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
-        android:text="@string/show_customization_example_1" />
+        android:text="@string/show_first_layer_tcf" />
 
     <Button
-        android:id="@+id/show_customization_example_2"
+        android:id="@+id/show_second_layer_tcf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
-        android:text="@string/show_customization_example_2" />
+        android:text="@string/show_second_layer_tcf" />
 
     <Button
-        android:id="@+id/custom_ui"
+        android:id="@+id/show_first_layer_ccpa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
         android:enabled="false"
-        android:text="@string/custom_ui" />
+        android:text="@string/show_first_layer_ccpa" />
 
+    <Button
+        android:id="@+id/show_second_layer_ccpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_button_horizontal_margin"
+        android:enabled="false"
+        android:text="@string/show_second_layer_ccpa" />
 </LinearLayout>
