@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
     private val showSecondLayerCCPAButton by lazy { findViewById<View>(R.id.show_second_layer_ccpa) }
     private var banner: UsercentricsBanner? = null
 
-    private val gdprSettingsId = "lQ_Dio7QL"
-    private val tcfSettingsId = "EA4jnNPb9"
-    private val ccpaSettingsId = "NfThHXzzZNc-RE"
+    private val gdprSettingsId = "yNGSHskJOVSWXR"
+    private val tcfSettingsId = "eSe0in4dcRZvg9"
+    private val ccpaSettingsId = "46O8pGZIBzXs5d"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
